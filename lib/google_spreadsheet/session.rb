@@ -180,7 +180,8 @@ module GoogleSpreadsheet
         #   session.create_spreadsheet("My new sheet")
         def create_spreadsheet(
             title = "Untitled",
-            feed_url = "https://docs.google.com/feeds/documents/private/full")
+            #feed_url = "https://docs.google.com/feeds/documents/private/full")
+            feed_url = "https://spreadsheets.google.com/feeds/spreadsheets/private/full?v=3.0")
           
           xml = <<-"EOS"
             <atom:entry

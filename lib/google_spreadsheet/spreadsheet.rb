@@ -71,7 +71,8 @@ module GoogleSpreadsheet
 
         # URL of feed used in document list feed API.
         def document_feed_url
-          return "https://docs.google.com/feeds/documents/private/full/spreadsheet%3A#{self.key}"
+          #return "https://docs.google.com/feeds/documents/private/full/spreadsheet%3A#{self.key}"
+          return "https://spreadsheets.google.com/feeds/spreadsheets/#{self.key}"
         end
 
         # <entry> element of spreadsheet feed as Nokogiri::XML::Element.
@@ -99,7 +100,8 @@ module GoogleSpreadsheet
         # Creates copy of this spreadsheet with the given title.
         def duplicate(new_title = nil)
           new_title ||= (self.title ? "Copy of " + self.title : "Untitled")
-          post_url = "https://docs.google.com/feeds/default/private/full/"
+          #post_url = "https://docs.google.com/feeds/default/private/full/"
+          post_url = "http://spreadsheets.google.com/feeds/spreadsheets/private/full"
           header = {"GData-Version" => "3.0", "Content-Type" => "application/atom+xml"}
           xml = <<-"EOS"
             <entry xmlns='http://www.w3.org/2005/Atom'>
